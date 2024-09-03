@@ -17,7 +17,7 @@ The objective is to learn modern vanilla HTML, CSS, and JavaScript by implementi
 
 ## Demo
 
-https://gulfaniputra.github.io/todo-vanillajs
+https://gulfaniputra.github.io/todo-vanillajs/
 
 ## Stack
 
