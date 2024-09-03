@@ -1,0 +1,37 @@
+header {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.todo-form {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.todo-form > label > input {
+  border: 1px solid black;
+}
+
+.todo-form > button {
+  border: 1px solid black;
+}
+
+.todo-list {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.todo-list > li {
+  border: 1px solid black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.todo-list > li > button {
+  border: 1px solid black;
+}
