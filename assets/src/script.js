@@ -11,7 +11,9 @@ form.addEventListener("submit", event => {
     status: false,
   });
 
-  console.log(`Button: clicked`);
+  localStorage.setItem("toDosData", JSON.stringify(toDos));
+
+  console.log(`Button: Clicked`);
   console.log(`ID: ${self.crypto.randomUUID()}`);
   console.log(`Task: ${event.target[0].value}`);
 });
