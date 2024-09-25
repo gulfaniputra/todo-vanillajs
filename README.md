@@ -13,7 +13,7 @@ A vanilla JavaScript todo application.
 
 ## Description
 
-The objective is to learn modern vanilla HTML, CSS, and JavaScript by implementing professional-grade methodologies and toolings.
+The objective is to learn modern vanilla HTML, CSS, and JavaScript by implementing professional-grade web application development methodologies and toolings.
 
 ## Demo
 

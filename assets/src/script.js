@@ -1,10 +1,8 @@
 const form = document.querySelector("#todo-form");
 
-let toDos = [];
-
 class Storage {
   addNew() {
-    localStorage.setItem("toDosData", JSON.stringify(toDos));
+    localStorage.setItem("toDosData", JSON.stringify(storage));
   }
 
   getAll() {
@@ -12,7 +10,7 @@ class Storage {
       localStorage.getItem("toDosData") !== null &&
       localStorage.getItem("toDosData") !== undefined
     ) {
-      toDos = JSON.parse(localStorage.getItem("toDosData"));
+      storage = JSON.parse(localStorage.getItem("toDosData"));
     }
   }
 }
@@ -22,11 +20,9 @@ const storage = new Storage();
 form.addEventListener("submit", event => {
   event.preventDefault();
 
-  toDos.push({
+  storage.addNew({
     id: self.crypto.randomUUID(),
     task: event.target[0].value,
     status: false,
   });
-
-  storage.addNew({ ...toDos });
 });
