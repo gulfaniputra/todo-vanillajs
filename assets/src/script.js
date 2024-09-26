@@ -1,8 +1,8 @@
 const form = document.querySelector("#todo-form");
 
 class Storage {
-  addNew() {
-    localStorage.setItem("toDosData", JSON.stringify(storage));
+  addNew(newItem) {
+    localStorage.setItem("toDosData", JSON.stringify(newItem));
   }
 
   getAll() {
