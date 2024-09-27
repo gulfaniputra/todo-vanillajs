@@ -10,7 +10,7 @@ class Storage {
       localStorage.getItem("toDosData") !== null &&
       localStorage.getItem("toDosData") !== undefined
     ) {
-      storage = JSON.parse(localStorage.getItem("toDosData"));
+      JSON.parse(localStorage.getItem("toDosData"));
     }
   }
 }
