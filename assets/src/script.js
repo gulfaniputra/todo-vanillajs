@@ -2,15 +2,26 @@ const form = document.querySelector("#todo-form");
 
 class Storage {
   addNew(newItem) {
-    localStorage.setItem("toDosData", JSON.stringify(newItem));
+    // If there is nothing, create an array and add new element to it before saving
+    let toDos;
+    if (newItem === null) {
+      toDos = [];
+      toDos.push(newItem);
+      localStorage.setItem("toDosData", JSON.stringify(toDos));
+      // If there is already some data, append the new element on the end
+    } else if (newItem !== null) {
+      toDos.push(newItem);
+      localStorage.setItem("toDosData", JSON.stringify(toDos));
+    }
   }
 
   getAll() {
-    if (
-      localStorage.getItem("toDosData") !== null &&
-      localStorage.getItem("toDosData") !== undefined
-    ) {
-      JSON.parse(localStorage.getItem("toDosData"));
+    // Return data when the method reads it
+    if (localStorage.getItem("toDosData") !== null) {
+      return JSON.parse(localStorage.getItem("toDosData"));
+      // Return empty array when it's empty
+    } else if (localStorage.getItem("toDosData") === null) {
+      return [];
     }
   }
 }
