@@ -3,7 +3,7 @@ const form = document.querySelector("#todo-form");
 class Storage {
   addNew(newItem) {
     // If there is nothing, create an array and add new element to it before saving
-    let toDos;
+    let toDos = this.getAll();
     if (newItem === null) {
       toDos = [];
       toDos.push(newItem);
