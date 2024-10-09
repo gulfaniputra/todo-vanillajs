@@ -1,4 +1,5 @@
 const form = document.querySelector("#todo-form");
+const list = document.querySelector("#todo-list");
 
 class Storage {
   addNew(newItem) {
@@ -37,3 +38,22 @@ form.addEventListener("submit", event => {
     status: false,
   });
 });
+
+function tasksListUi() {
+  // Collect all tasks
+  let allTasks = ``;
+  // Loop over toDos and add tasks 'id' and 'title' as strings of HTML <li> element
+  this.storage.toDos.forEach(toDo => {
+    allTasks += `
+    <li id="${toDo.id}">
+      ${todo.title}
+      <button class="task-complete">
+        <span>&#10003;</span>
+      </button>
+    </li>`;
+  });
+  // Render the tasks as a list to user
+  list.innerHTML = allTasks;
+}
+
+console.log(tasksListUi());
