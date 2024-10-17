@@ -3,17 +3,10 @@ const list = document.querySelector("#todo-list");
 
 class Storage {
   addNew(newItem) {
-    // If there is nothing, create an array and add new element to it before saving
+    // Create an array and add new element to it before saving
     let toDos = this.getAll();
-    if (newItem === null) {
-      toDos = [];
-      toDos.push(newItem);
-      localStorage.setItem("toDosData", JSON.stringify(toDos));
-      // If there is already some data, append the new element on the end
-    } else if (newItem !== null) {
-      toDos.push(newItem);
-      localStorage.setItem("toDosData", JSON.stringify(toDos));
-    }
+    toDos.push(newItem);
+    localStorage.setItem("toDosData", JSON.stringify(toDos));
   }
 
   getAll() {
@@ -41,10 +34,11 @@ form.addEventListener("submit", event => {
 
 function tasksListUi() {
   // Collect all tasks
-  let allTasks = ``;
+  let allTasks = this.storage.getAll();
+  let html = ``;
   // Loop over toDos and add tasks 'id' and 'title' as strings of HTML <li> element
-  this.storage.toDos.forEach(toDo => {
-    allTasks += `
+  allTasks.forEach(toDo => {
+    html += `
     <li id="${toDo.id}">
       ${todo.title}
       <button class="task-complete">
@@ -53,7 +47,5 @@ function tasksListUi() {
     </li>`;
   });
   // Render the tasks as a list to user
-  list.innerHTML = allTasks;
+  list.innerHTML = html;
 }
-
-console.log(tasksListUi());
