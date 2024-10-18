@@ -46,6 +46,21 @@ function tasksListUi() {
       </button>
     </li>`;
   });
-  // Render the tasks as a list to user
+  // Render the tasks as a list
   list.innerHTML = html;
 }
+
+// Check if there is a click from a button with class="task-complete"
+document.documentElement.addEventListener("click", event => {
+  if (event.target.classList.contains("task-complete")) {
+    // Get an incomplete to-do and mark it as completed
+    let allTasks = this.storage.getAll();
+    allTasks = allTasks.filter(
+      toDo => toDo.id !== event.target.parentElement.id
+    );
+    // Save the changed data
+    this.storage.addNew(allTasks);
+    // Display the newly synched tasks list
+    tasksListUi();
+  }
+});
