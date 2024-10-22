@@ -3,7 +3,7 @@ const list = document.querySelector("#todo-list");
 
 class Storage {
   addNew(newItem) {
-    // Create an array and add new element to it before saving
+    // Create an array & add a new element to it before saving
     let toDos = this.getAll();
     toDos.push(newItem);
     localStorage.setItem("toDosData", JSON.stringify(toDos));
@@ -13,7 +13,7 @@ class Storage {
     // Return data when the method reads it
     if (localStorage.getItem("toDosData") !== null) {
       return JSON.parse(localStorage.getItem("toDosData"));
-      // Return empty array when it's empty
+      // Return an empty array when it's empty
     } else if (localStorage.getItem("toDosData") === null) {
       return [];
     }
@@ -21,6 +21,25 @@ class Storage {
 }
 
 const storage = new Storage();
+
+function tasksListUi() {
+  // Collect all tasks
+  let allTasks = this.storage.getAll();
+  let html = ``;
+  // Loop over toDos then add task's 'id' & 'title' as strings
+  // of HTML <li> element
+  allTasks.forEach(toDo => {
+    html += `
+    <li id="${toDo.id}">
+    ${todo.title}
+    <button class="task-complete">
+    <span>&#10003;</span>
+    </button>
+    </li>`;
+  });
+  // Render the tasks as a list
+  list.innerHTML = html;
+}
 
 form.addEventListener("submit", event => {
   event.preventDefault();
@@ -30,25 +49,9 @@ form.addEventListener("submit", event => {
     task: event.target[0].value,
     status: false,
   });
-});
 
-function tasksListUi() {
-  // Collect all tasks
-  let allTasks = this.storage.getAll();
-  let html = ``;
-  // Loop over toDos and add tasks 'id' and 'title' as strings of HTML <li> element
-  allTasks.forEach(toDo => {
-    html += `
-    <li id="${toDo.id}">
-      ${todo.title}
-      <button class="task-complete">
-        <span>&#10003;</span>
-      </button>
-    </li>`;
-  });
-  // Render the tasks as a list
-  list.innerHTML = html;
-}
+  tasksListUi();
+});
 
 // Check if there is a click from a button with class="task-complete"
 document.documentElement.addEventListener("click", event => {
