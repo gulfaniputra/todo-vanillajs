@@ -57,12 +57,12 @@ form.addEventListener("submit", event => {
 document.documentElement.addEventListener("click", event => {
   if (event.target.classList.contains("task-complete")) {
     // Get an incomplete to-do and mark it as completed
-    let allTasks = this.storage.getAll();
+    let allTasks = storage.getAll();
     allTasks = allTasks.filter(
       toDo => toDo.id !== event.target.parentElement.id
     );
     // Save the changed data
-    this.storage.addNew(allTasks);
+    storage.addNew(allTasks);
     // Display the newly synched tasks list
     tasksListUi();
   }
