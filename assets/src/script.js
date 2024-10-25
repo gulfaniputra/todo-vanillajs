@@ -24,14 +24,14 @@ const storage = new Storage();
 
 function tasksListUi() {
   // Collect all tasks
-  let allTasks = this.storage.getAll();
+  let allTasks = storage.getAll();
   let html = ``;
-  // Loop over toDos then add task's 'id' & 'title' as strings
+  // Loop over allTasks then add task's 'id' & 'title' as strings
   // of HTML <li> element
   allTasks.forEach(toDo => {
     html += `
     <li id="${toDo.id}">
-    ${todo.title}
+    ${toDo.task}
     <button class="task-complete">
     <span>&#10003;</span>
     </button>
