@@ -41,20 +41,9 @@ function tasksListUi() {
   list.innerHTML = html;
 }
 
-form.addEventListener("submit", event => {
+function buttonsCallbacks(event) {
   event.preventDefault();
 
-  storage.addNew({
-    id: self.crypto.randomUUID(),
-    task: event.target[0].value,
-    status: false,
-  });
-
-  tasksListUi();
-});
-
-// Check if there is a click from a button with class="task-complete"
-document.documentElement.addEventListener("click", event => {
   if (event.target.classList.contains("task-complete")) {
     // Get an incomplete to-do and mark it as completed
     let allTasks = storage.getAll();
@@ -63,7 +52,15 @@ document.documentElement.addEventListener("click", event => {
     );
     // Save the changed data
     storage.addNew(allTasks);
-    // Display the newly synched tasks list
-    tasksListUi();
+  } else {
+    storage.addNew({
+      id: self.crypto.randomUUID(),
+      task: event.target[0].value,
+      status: false,
+    });
   }
-});
+
+  tasksListUi();
+}
+
+form.addEventListener("submit", buttonsCallbacks);
