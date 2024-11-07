@@ -42,6 +42,7 @@ function tasksListUi() {
 }
 
 function buttonsCallbacks(event) {
+  console.log(event.target);
   event.preventDefault();
 
   if (event.target.classList.contains("task-complete")) {
@@ -64,3 +65,6 @@ function buttonsCallbacks(event) {
 }
 
 form.addEventListener("submit", buttonsCallbacks);
+
+// Load data from memory on application start
+tasksListUi();
