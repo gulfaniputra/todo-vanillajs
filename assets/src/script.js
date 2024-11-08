@@ -31,11 +31,14 @@ function tasksListUi() {
   allTasks.forEach(toDo => {
     html += `
     <li id="${toDo.id}">
-    ${toDo.task}
-    <button class="task-complete">
-    <span>&#10003;</span>
-    </button>
-    </li>`;
+      ${toDo.task}
+      <form class="task-complete">
+        <button>
+          <span>&#10003;</span>
+        </button>
+      </form>
+    </li>
+    `;
   });
   // Render the tasks as a list
   list.innerHTML = html;
