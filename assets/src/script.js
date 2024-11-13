@@ -32,11 +32,9 @@ function tasksListUi() {
     html += `
     <li id="${toDo.id}">
       ${toDo.task}
-      <form class="task-complete">
-        <button>
-          <span>&#10003;</span>
-        </button>
-      </form>
+      <button class="task-complete">
+        <span>&#10003;</span>
+      </button>
     </li>
     `;
   });
@@ -45,7 +43,6 @@ function tasksListUi() {
 }
 
 function buttonsCallbacks(event) {
-  console.log(event.target);
   event.preventDefault();
 
   if (event.target.classList.contains("task-complete")) {
