@@ -62,6 +62,11 @@ function buttonsCallbacks(event) {
   }
 
   tasksListUi();
+  dynamicElementsEvents();
+}
+
+function dynamicElementsEvents(element) {
+  element.addEventListener("click", function () {});
 }
 
 form.addEventListener("submit", buttonsCallbacks);
