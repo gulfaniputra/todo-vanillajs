@@ -1,4 +1,4 @@
-const form = document.querySelector("#todo-form");
+const button = document.querySelector("button");
 const list = document.querySelector("#todo-list");
 
 class Storage {
@@ -42,7 +42,7 @@ function tasksListUi() {
   list.innerHTML = html;
 }
 
-function buttonsCallbacks(event) {
+button.onclick = function (event) {
   event.preventDefault();
 
   if (event.target.classList.contains("task-complete")) {
@@ -62,14 +62,7 @@ function buttonsCallbacks(event) {
   }
 
   tasksListUi();
-  dynamicElementsEvents();
-}
-
-function dynamicElementsEvents(element) {
-  element.addEventListener("click", function () {});
-}
-
-form.addEventListener("submit", buttonsCallbacks);
+};
 
 // Load data from memory on application start
 tasksListUi();
