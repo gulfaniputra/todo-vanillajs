@@ -56,7 +56,7 @@ button.onclick = function (event) {
   } else {
     storage.addNew({
       id: self.crypto.randomUUID(),
-      task: event.target.elements[0].value,
+      task: document.querySelector("#task-input").value,
       status: false,
     });
   }
