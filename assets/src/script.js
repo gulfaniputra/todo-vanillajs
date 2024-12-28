@@ -44,6 +44,7 @@ function tasksListUi() {
 
 button.onclick = function (event) {
   event.preventDefault();
+  console.log(event);
 
   if (event.target.classList.contains("task-complete")) {
     // Get an incomplete to-do and mark it as completed
