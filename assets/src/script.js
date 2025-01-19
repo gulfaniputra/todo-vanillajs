@@ -32,7 +32,7 @@ function tasksListUi() {
     html += `
     <li id="${toDo.id}">
       ${toDo.task}
-      <button class="task-complete">
+      <button class="task-complete" onclick="completeTask('${toDo.id}')">
         <span>&#10003;</span>
       </button>
     </li>
@@ -44,26 +44,22 @@ function tasksListUi() {
 
 button.onclick = function (event) {
   event.preventDefault();
-  console.log(event);
 
-  if (event.target.classList.contains("task-complete")) {
-    // Get an incomplete to-do and mark it as completed
-    let allTasks = storage.getAll();
-    allTasks = allTasks.filter(
-      toDo => toDo.id !== event.target.parentElement.id
-    );
-    // Save the changed data
-    storage.addNew(allTasks);
-  } else {
-    storage.addNew({
-      id: self.crypto.randomUUID(),
-      task: document.querySelector("#task-input").value,
-      status: false,
-    });
-  }
+  storage.addNew({
+    id: self.crypto.randomUUID(),
+    task: document.querySelector("#task-input").value,
+    status: false,
+  });
 
   tasksListUi();
 };
+
+function completeTask(id) {
+  let allTasks = storage.getAll();
+  allTasks = allTasks.filter(toDo => toDo.id !== id);
+  localStorage.setItem("toDosData", JSON.stringify(allTasks));
+  tasksListUi();
+}
 
 // Load data from memory on application start
 tasksListUi();
