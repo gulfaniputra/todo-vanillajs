@@ -33,7 +33,7 @@ function tasksListUi() {
     <li id="${toDo.id}">
       ${toDo.task}
       <button class="task-complete" onclick="completeTask('${toDo.id}')">
-        <span>&#10003;</span>
+        <span>&#10005;</span>
       </button>
     </li>
     `;
