@@ -1,37 +1,83 @@
+:root {
+  --primary-color: #5e81ac;
+  --secondary-color: #a3be8c;
+  --background-color: #eceff4;
+  --text-color: #2e3440;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+}
+
 header {
-  border: 1px solid black;
   margin: 1rem;
   padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
   text-align: center;
+  color: white;
+  background-color: var(--primary-color);
 }
 
 .todo-form {
-  border: 1px solid black;
   margin: 1rem;
   padding: 1rem;
+  border-radius: 8px;
   text-align: center;
+  background-color: #d8dee9;
 }
 
 .todo-form > label > input {
-  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  font-family: "Poppins", sans-serif;
 }
 
 .todo-form > button {
-  border: 1px solid black;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.todo-form > button:hover {
+  background-color: var(--primary-color);
 }
 
 .todo-list {
-  border: 1px solid black;
-  margin: 1rem;
-  padding: 1rem;
+  /* margin: 1rem; */
+  /* padding: 1rem; */
+  /* background-color: #d8dee9; */
+  /* border-radius: 8px; */
 }
 
 .todo-list > li {
-  border: 1px solid black;
   margin: 0.5rem;
   padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  background-color: #d8dee9;
 }
 
 .todo-list > li > button {
-  border: 1px solid black;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.todo-list > li > button:hover {
+  background-color: var(--primary-color);
 }
