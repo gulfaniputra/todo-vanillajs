@@ -31,7 +31,9 @@ function tasksListUi() {
   allTasks.forEach(toDo => {
     html += `
     <li id="${toDo.id}">
-      <input type="checkbox" class="task-checkbox" />
+      <input type="checkbox" class="task-checkbox" ${
+        toDo.status ? "checked" : ""
+      } />
       ${toDo.task}
       <button class="task-complete" onclick="completeTask('${toDo.id}')">
         <span>&#10005;</span>
