@@ -18,6 +18,18 @@ class Storage {
       return [];
     }
   }
+
+  updateStatus(id, status) {
+    let toDos = this.getAll();
+    toDos = toDos.map(toDo => {
+      if (toDo.id === id) {
+        toDo.status = status;
+      }
+      return toDo;
+    });
+
+    localStorage.setItem("toDosData", JSON.stringify(toDos));
+  }
 }
 
 const storage = new Storage();
@@ -33,7 +45,7 @@ function tasksListUi() {
     <li id="${toDo.id}">
       <input type="checkbox" class="task-checkbox" ${
         toDo.status ? "checked" : ""
-      } />
+      } onchange="newStatus('${toDo.id}', this.checked)" />
       ${toDo.task}
       <button class="task-complete" onclick="completeTask('${toDo.id}')">
         <span>&#10005;</span>
@@ -62,6 +74,10 @@ function completeTask(id) {
   allTasks = allTasks.filter(toDo => toDo.id !== id);
   localStorage.setItem("toDosData", JSON.stringify(allTasks));
   tasksListUi();
+}
+
+function newStatus(id, status) {
+  storage.updateStatus(id, status);
 }
 
 // Load data from memory on application start
