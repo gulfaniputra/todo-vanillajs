@@ -47,6 +47,7 @@ function tasksListUi() {
         toDo.status ? "checked" : ""
       } onchange="newStatus('${toDo.id}', this.checked)" />
       ${toDo.task}
+      <button class="task-edit" onclick="editTask('${toDo.id}')">Edit</button>
       <button class="task-complete" onclick="completeTask('${toDo.id}')">
         <span>&#10005;</span>
       </button>
@@ -75,9 +76,19 @@ function completeTask(id) {
   localStorage.setItem("toDosData", JSON.stringify(allTasks));
   tasksListUi();
 }
-
 function newStatus(id, status) {
   storage.updateStatus(id, status);
+}
+
+function editTask(id) {
+  let allTasks = storage.getAll();
+  const oneTask = allTasks.find(toDo => toDo.id === id);
+  const editedTask = prompt("Editing task:", oneTask.task);
+  if (editedTask !== null) {
+    oneTask.task = editedTask;
+    localStorage.setItem("toDosData", JSON.stringify(allTasks));
+    tasksListUi();
+  }
 }
 
 // Load data from memory on application start
