@@ -21,7 +21,7 @@ class Storage {
 
   updateStatus(id, status) {
     let toDos = this.getAll();
-    toDos = toDos.map(toDo => {
+    toDos = toDos.map((toDo) => {
       if (toDo.id === id) {
         toDo.status = status;
       }
@@ -40,7 +40,7 @@ function tasksListUi() {
   let html = ``;
   // Loop over allTasks then add task's 'id' & 'title' as strings
   // of HTML <li> element
-  allTasks.forEach(toDo => {
+  allTasks.forEach((toDo) => {
     html += `
     <li id="${toDo.id}">
       <input type="checkbox" class="task-checkbox" ${
@@ -72,7 +72,7 @@ button.onclick = function (event) {
 
 function completeTask(id) {
   let allTasks = storage.getAll();
-  allTasks = allTasks.filter(toDo => toDo.id !== id);
+  allTasks = allTasks.filter((toDo) => toDo.id !== id);
   localStorage.setItem("toDosData", JSON.stringify(allTasks));
   tasksListUi();
 }
@@ -82,7 +82,7 @@ function newStatus(id, status) {
 
 function editTask(id) {
   let allTasks = storage.getAll();
-  const oneTask = allTasks.find(toDo => toDo.id === id);
+  const oneTask = allTasks.find((toDo) => toDo.id === id);
   const editedTask = prompt("Editing task:", oneTask.task);
   if (editedTask !== null) {
     oneTask.task = editedTask;
