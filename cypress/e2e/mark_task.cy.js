@@ -1,3 +1,5 @@
+import { createTodo } from "../support/create-todo-helper";
+
 describe("Vanilla JS Todo App", () => {
   beforeEach(() => {
     // 1. A user visits the app
@@ -5,14 +7,7 @@ describe("Vanilla JS Todo App", () => {
   });
 
   it("successfully mark a task", () => {
-    // 2. They type "Task 0" into the input that has an id of 'task-input'
-    cy.get("#task-input").type("Task 0");
-
-    // 3. They click a button labeled 'Add Task'
-    cy.get("button").contains("Add Task").click();
-
-    // 4. The '[id=task-input]' input has "Task 0" as its value
-    cy.get("#task-input").should("have.value", "Task 0");
+    createTodo("Task 0");
 
     // 5. The user clicks the checkbox with class="task-checkbox"
     cy.get(".task-checkbox").first().as("taskCheckbox");
